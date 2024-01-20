@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import Error from "./Error";
 
-function Form({patients, setPatients }){
+function Form({patients, setPatients, patient, setPatient }){
 
     const [petName, setPetName] = useState('');
     const [owner, setOwner] = useState('');
@@ -9,6 +10,23 @@ function Form({patients, setPatients }){
     const [symptoms, setSymtoms] = useState('');
 
     const [error, setError] = useState(false);
+
+    useEffect(() => {
+        if(Object.keys(patient).length > 0){
+            setPetName(patient.petName);
+            setOwner(patient.owner);
+            setEmail(patient.email);
+            setMedRelease(patient.medRelease);
+            setSymtoms(patient.symptoms);
+        }
+    }, [patient])
+
+    const gen_id = () =>{
+        const random = Math.random().toString(36).substring(2);
+        const date = Date.now().toString(36);
+
+        return random + date;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,7 +47,19 @@ function Form({patients, setPatients }){
                 symptoms
             }
 
-            setPatients([...patients, patientObj]);
+            if(patient.id){
+                // Editing patient
+                patientObj.id = patient.id;
+                const updatedPatients = patients.map(patientState => patientState.id === patient.id ? patientObj : patientState)
+                setPatients(updatedPatients)
+                setPatient({})
+
+            }else{
+                // Adding new patient
+                patientObj.id = gen_id();
+                setPatients([...patients, patientObj]);
+            }
+
 
             // Reset form
             setPetName('');
@@ -39,7 +69,6 @@ function Form({patients, setPatients }){
             setSymtoms('');
         }
 
-        console.log("Enviando formulario")
     }
 
 
@@ -58,9 +87,7 @@ function Form({patients, setPatients }){
                 onSubmit={handleSubmit}     
             >
                 {error && (
-                    <div className="bg-red-700 text-white text-center p-3 uppercase font-bold mb-3 rounded-md">
-                        <p>All fields are required</p>
-                    </div>
+                    <Error><p>All fields are required.</p></Error>
                 )}
                 <div className="mb-5">
                     <label className="block text-gray-700 uppercase font-bold" htmlFor="petname">Pet Name</label>
@@ -125,7 +152,7 @@ function Form({patients, setPatients }){
                 <input 
                     type="submit" 
                     className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all"
-                    value="Add Patient"
+                    value={patient.id ? 'Edit Patient' : 'Add Patient'}
                 />
             </form>
         </div>
