@@ -19,7 +19,7 @@ To install and run **Appointments App** locally, follow these steps:
 
 1. Clone the repository:
    ```
-   git clone [REPOSITORY_URL]
+   git clone https://github.com/EdgarPsda/appointments-app
    ```
 2. Install dependencies:
    ```
