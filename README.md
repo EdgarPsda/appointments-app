@@ -1,8 +1,40 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Appointments App
 
-Currently, two official plugins are available:
+## Description
+**Appointments App** is an application designed to facilitate the scheduling and management of medical appointments for pets. With this application, users can efficiently manage their pets' medical appointments, regardless of the type of animal. It also allows users to add custom comments and keep detailed track of each appointment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- **Appointment Management**: Manage medical appointments for any type of pet.
+- **Comments**: Add custom comments to each appointment for detailed tracking.
+- **User-Friendly Interface**: Designed with an intuitive and easy-to-use interface.
+
+## Technologies Used
+- React
+- Vite
+- Tailwind CSS
+
+## Installation
+To install and run **Appointments App** locally, follow these steps:
+
+1. Clone the repository:
+   ```
+   git clone [REPOSITORY_URL]
+   ```
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Run the application in development mode:
+   ```
+   npm run dev
+   ```
+
+## Online Demo
+You can try out **Appointments App** through this [online demo](https://exquisite-gingersnap-1a6ef4.netlify.app/).
+
+## Contributing
+If you would like to contribute to this project, please follow the best practices of modern React and JavaScript. Your contributions are welcome.
+
+## License
+This project is under the MIT license. For more details, see the LICENSE file.
